@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html class="html">
+<base href='/'>
+<script src="assets/js/angular-min.js"></script> 
+<script src="assets/js/angular-route.js"></script> 
+<script src="app/route.js"></script> 
+<script src="app/controller/userCtrl.js"></script> 
+<link rel="stylesheet" href="assets/css/style.css">
+<body>
+
+<center><h3>Login Form</h3><center>
+
+<div class="field">
+<center>
+<form ng-app="myApp" ng-controller="validateCtrl" name="myForm" novalidate>
+
+<div class="text">
+  <label>User ID</label>&emsp;
+  <input type="email" name="email" ng-model="email" required>
+  <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+  <span style="font-size:12px" ng-show="myForm.email.$error.required">Email is required.</span>
+  <span style="font-size:12px" ng-show="myForm.email.$error.email">Invalid email address.</span>
+  </span></br></br>
+</div>
+
+<div class="text">
+  <label>Password</label>&emsp;
+  <input name="pass" type="password" ng-model="pass" required>
+  <span style="color:red;font-size:12px"" ng-show="myForm.pass.$error.required">Password is required.</span></br></br>
+</div>
+
+<div class="text">  
+  <label>Role</label>&emsp;
+    <select ng-model="role">
+       <option value="user">Normal User</option>
+       <option value="manager" selected>SPOC/Manager</option>
+       <option value="member">Tech Council Member</option>
+     </select></br></br>
+</div>
+
+<div class="text">
+  <input class="button" type="submit" value="Login" ng-disabled="myForm.pass.$error.required || myForm.email.$dirty && myForm.email.$invalid">
+</div>
+
+</form>
+</center>
+</div>
+
+<script src="app/app.js"> </script>
+
+</body>
+</html>
