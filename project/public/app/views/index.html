@@ -1,52 +1,69 @@
+
 <!DOCTYPE html>
-<html class="html">
-<base href='/'>
-<script src="assets/js/angular-min.js"></script> 
-<script src="assets/js/angular-route.js"></script> 
-<script src="app/route.js"></script> 
-<script src="app/controller/userCtrl.js"></script> 
-<link rel="stylesheet" href="assets/css/style.css">
-<body>
+<html lang="en">
+  <head>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+	<!-- Cascade Style Sheets -->
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+	
+	<!-- Main Angular files -->
+	<script src="assets/js/angular.js"></script>
+	<script src="assets/js/angular-route.js"></script>
+	
+	<!-- Angular Config/Routes -->
+	<script src="app/app.js"></script>
+	<script src="app/route.js"></script>
+	
+	<!-- Angular Controllers -->
+	<script src="app/controller/userCtrl.js"></script>
+	<script src="app/controller/mainCtrl.js"></script>
+	
+	<!-- Angular Services -->
+	<script src="app/services/userServices.js"></script>
+	<script src="app/services/authServices.js"></script>
+	
+	<title></title>
 
-<center><h3>Login Form</h3><center>
+   
+  </head>
 
-<div class="field">
-<center>
-<form ng-app="myApp" ng-controller="validateCtrl" name="myForm" novalidate>
+  <body ng-app="userApp" ng-controller="mainCtrl as main">
 
-<div class="text">
-  <label>User ID</label>&emsp;
-  <input type="email" name="email" ng-model="email" required>
-  <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
-  <span style="font-size:12px" ng-show="myForm.email.$error.required">Email is required.</span>
-  <span style="font-size:12px" ng-show="myForm.email.$error.email">Invalid email address.</span>
-  </span></br></br>
-</div>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Register</a></li>
+            <li><a href="/login">Login</a></li>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+	  <div>&emsp;</div>
+	  <div>&emsp;</div>
+	  <div>&emsp;</div>
+      
+	  <div ng-view></div>
 
-<div class="text">
-  <label>Password</label>&emsp;
-  <input name="pass" type="password" ng-model="pass" required>
-  <span style="color:red;font-size:12px"" ng-show="myForm.pass.$error.required">Password is required.</span></br></br>
-</div>
-
-<div class="text">  
-  <label>Role</label>&emsp;
-    <select ng-model="role">
-       <option value="user">Normal User</option>
-       <option value="manager" selected>SPOC/Manager</option>
-       <option value="member">Tech Council Member</option>
-     </select></br></br>
-</div>
-
-<div class="text">
-  <input class="button" type="submit" value="Login" ng-disabled="myForm.pass.$error.required || myForm.email.$dirty && myForm.email.$invalid">
-</div>
-
-</form>
-</center>
-</div>
-
-<script src="app/app.js"> </script>
-
-</body>
+    <!-- Bootstrap core JavaScript-->
+	 <script src="assets/js/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/bootstrap.js"></script>
+	
+  </body>
 </html>
