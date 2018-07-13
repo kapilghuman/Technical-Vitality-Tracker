@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html class="html">
+
+<link rel="stylesheet" href="assets/css/style.css">
+
+<body>
+
+<center><h3>Login Form</h3><center>
+
+<div class="field">
+
+<center>
+<form ng-submit="main.doLogIn(loginData);">
+
+<div class="text">
+  <label>User ID</label>
+  <input type="email" class="form-control" name="userId" placeholder="Please enter the email.." ng-model="main.loginData.userId" required>
+</div>&emsp;
+
+<div class="text">
+  <label>Password</label>
+  <input name="pass" class="form-control" type="password" placeholder="Please enter the password.." ng-model="main.loginData.password" required>
+</div>&emsp;
+	
+<div class="text">
+  <button class="button" type="submit">LOGIN</button>
+</div>
+
+</form>
+</center>
+</div>
+
+<br>
+
+<div class="jumbostron text-center" ng-show="main.loading">
+   <span class="glyphicon glyphicon-repeat spinner"></span>
+   <p>Loading..</p>
+</div>
+
+<br>
+
+<div class="row show-hide-message" ng-show="main.successMsg">
+  <div class="alert alert-success" >{{ main.successMsg }}</div>
+</div>
+
+<div class="row show-hide-message" ng-show="main.errorMsg">
+  <div class="alert alert-danger" >{{ main.errorMsg }}</div>
+</div>
+
+</body>
+</html>
