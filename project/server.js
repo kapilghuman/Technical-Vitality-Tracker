@@ -2,27 +2,29 @@ var express = require('express');
 var app = express();
 var port = process.env.PORT || 3000;
 var morgan = require('morgan');
-var couchdb = require('node-couchdb');
+var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var router = express.Router();
+var appRoutes = require('./app/routes/api')(router);
 var path = require('path');
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended:true }));
 app.use(express.static(__dirname + '/public'));
+app.use('/api', appRoutes);
 
-var couch = new couchdb({
-	auth: {
-		user: 'admin',
-		password: 'admin'
+mongoose.connect("mongodb://localhost:27017/employees",new function(err){
+	if(err){
+		console.log("Not connected to database", +err);
+	}
+	
+	else{
+		console.log("Connected");
 	}
 });
 
-couch.listDatabases().then(function(dbs){
-	console.log(dbs);
-});
-
-app.get('*', function(req, res){
+app.get('/', function(req, res){
 	res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
 });
 
