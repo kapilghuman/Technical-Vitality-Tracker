@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html class="html">
+
+<link rel="stylesheet" href="assets/css/style.css">
+
+<body>
+
+<center><h3>Registration Form</h3><center>
+
+<div class="field">
+
+<center>
+<form ng-submit="register.regUser(regData);">
+
+<div class="text">
+  <label>Username</label>
+  <input type="text" class="form-control" name="username" placeholder="Please enter the username.." ng-model="register.regData.username" required>
+</div>&emsp;
+
+<div class="text">
+  <label>User ID</label>
+  <input type="email" class="form-control" name="userId" placeholder="Please enter the email.." ng-model="register.regData.userId" required>
+</div>&emsp;
+
+<div class="text">
+  <label>Password</label>
+  <input name="pass" class="form-control" type="password" placeholder="Please enter the password.." ng-model="register.regData.password" required>
+</div>&emsp;
+
+<div class="text" >  
+  <label>Role</label>&emsp;</br>
+    <select ng-model="register.regData.role" required>
+       <option value="Normal_user" selected>Normal User</option>
+       <option value="Spoc/Manager">SPOC/Manager</option>
+       <option value="Tech_Council_Member">Tech Council Member</option>
+     </select>
+</div>&emsp;
+
+	
+<div class="text">
+  <button class="button" type="submit">REGISTER</button>
+</div>
+
+</form>
+</center>
+</div>
+
+<br>
+
+<div class="jumbostron text-center" ng-show="register.loading">
+   <span class="glyphicon glyphicon-repeat spinner"></span>
+   <p>Loading..</p>
+</div>
+
+<br>
+
+<div class="row show-hide-message" ng-show="register.successMsg">
+  <div class="alert alert-success" >{{ register.successMsg }}</div>
+</div>
+
+<div class="row show-hide-message" ng-show="register.errorMsg">
+  <div class="alert alert-danger" >{{ register.errorMsg }}</div>
+</div>
+
+</body>
+</html>
