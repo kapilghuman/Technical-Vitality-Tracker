@@ -38,23 +38,29 @@ module.exports = function(router){
 			res.json({ success:false, message:"Could not Authenticate the user"});
 		}
 			
-		else if(user){
-			
-			if(req.body.password){
-			var validPassword = user.comparePassword(req.body.password);
-			}
-			
-			else{
-				  res.json({ success:false, message:"No password provided"});
-			}
-			
-			if(!validPassword){
-			    res.json({ success:false, message:"Could Authenticate the password"});
-		    }
-			
-			else{
-				res.json({ success:true, message:"Authenticate User"});
-			}
+		else if(user)
+		{
+               		if(req.body.password){
+                		var validPassword = user.comparePassword(req.body.password);
+               		}
+               		else{
+                   		res.json({success:false , message:"Please enter password"});
+               		}
+               		if(req.body.role){
+                		var validRole= user.compareRole(req.body.role);
+               		}
+               		else{
+                		res.json({success:false , message:"Please enter valid role"});   
+               		}
+            		if(!validPassword){
+                		res.json({success:false,message:'Could not authenticate password'});
+            		}
+            		else if(!validRole){
+                		res.json({success:false,message:'Could not authenticate role'});   
+            		}
+            		else{
+                		res.json({success:true,message:"User authenticated "});
+            		}
 		}
 	 });
   });
