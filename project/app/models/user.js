@@ -26,4 +26,10 @@ UserSchema.methods.comparePassword = function(password){
 	return bcrypt.compareSync(password, this.password);
 };
 
+//comparing role
+UserSchema.methods.compareRole = function(role){
+    if(role == this.role){ return true; }
+	
+    else{ return false; }
+}
 module.exports = mongoose.model('User', UserSchema);
