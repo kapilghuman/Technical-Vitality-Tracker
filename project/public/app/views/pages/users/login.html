@@ -23,6 +23,15 @@
 </div>&emsp;
 	
 <div class="text">
+	<label>Role</label>
+        <select class="form-control" name="role" ng-model="main.loginData.role" required>
+                <option value="normal">Normal</option>
+                <option value="manager">Manager</option>
+                <option value="tech">Tech Council Member</option>
+        </select>
+</div>&emsp;
+	
+<div class="text">
   <button class="button" type="submit">LOGIN</button>
 </div>
 
