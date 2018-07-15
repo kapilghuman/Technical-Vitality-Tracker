@@ -19,6 +19,13 @@ angular.module('appRoutes', ['ngRoute'])
 	$routeProvider.when('/AddAccomplishments', {
 		templateUrl: 'app/views/pages/users/aa.html'
 	});
+	$routeProvider.when('/logout',{
+            templateUrl:'app/views/pages/users/logout.html'
+    	});
+    	$routeProvider.when('/profile',{
+            templateUrl:'app/views/pages/users/profile.html'
+    	});
+	$routeProvider.otherwise({ redirectTo : '/'});
 	
 	$locationProvider.html5Mode({
 		enabled: true,
