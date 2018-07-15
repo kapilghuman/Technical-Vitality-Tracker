@@ -12,8 +12,12 @@ angular.module('appRoutes', ['ngRoute'])
 		templateUrl: 'app/views/pages/users/login.html'
 	});
 	
-	$routeProvider.when('/abc', {
-		templateUrl: 'app/views/pages/users/abc.html'
+	$routeProvider.when('/dash', {
+		templateUrl: 'app/views/pages/users/dash.html'
+	});
+	
+	$routeProvider.when('/AddAccomplishments', {
+		templateUrl: 'app/views/pages/users/aa.html'
 	});
 	
 	$locationProvider.html5Mode({
