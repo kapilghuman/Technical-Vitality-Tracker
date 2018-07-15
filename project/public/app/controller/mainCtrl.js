@@ -17,7 +17,7 @@ angular.module('mainController', ['authServices'])
 				
 				//Redirect to Register Page
 				$timeout(function(){
-					$location.path('/abc');
+					$location.path('/dash');
 				}, 2000);
 			}
 			
