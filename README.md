@@ -1,2 +1,2 @@
 # Technical-Vitality-Tracker
-Project Based on Angular JS, Node JS and CouchDB
+Project Based on Angular JS, Node JS and MongoDB
