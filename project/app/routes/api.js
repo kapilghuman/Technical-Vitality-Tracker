@@ -31,7 +31,7 @@ module.exports = function(router){
   //http://localhost:port/api/authenticate
   
   router.post('/authenticate', function(req, res){
-	 User.findOne({ userId: req.body.userId }).select('userId username password role').exec(function(err, user){
+	 User.findOne({ username: req.body.username }).select('username userId password role').exec(function(err, user){
 		if(err) throw err; 
 		
 		if(!user){
