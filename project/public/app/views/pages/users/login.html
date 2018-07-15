@@ -21,14 +21,14 @@
   <label>Password</label>
   <input name="pass" class="form-control" type="password" placeholder="Please enter the password.." ng-model="main.loginData.password" required>
 </div>&emsp;
-	
+
 <div class="text">
-	<label>Role</label>
-        <select class="form-control" name="role" ng-model="main.loginData.role" required>
-                <option value="normal">Normal</option>
-                <option value="manager">Manager</option>
-                <option value="tech">Tech Council Member</option>
-        </select>
+  <label>Role</label>
+    <select class="form-control" name="role" ng-model="main.loginData.role" required>
+       <option value="Normal_user" selected>Normal User</option>
+       <option value="Spoc/Manager">SPOC/Manager</option>
+       <option value="Tech_Council_Member">Tech Council Member</option>
+    </select>
 </div>&emsp;
 	
 <div class="text">
@@ -58,3 +58,4 @@
 
 </body>
 </html>
+
