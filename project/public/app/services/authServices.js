@@ -69,4 +69,4 @@ angular.module('authServices',[])
         return config;
     }
     return authInterceptors;
-})
+});
