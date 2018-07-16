@@ -17,15 +17,18 @@ angular.module('appRoutes', ['ngRoute'])
 	});
 	
 	$routeProvider.when('/AddAccomplishments', {
-		templateUrl: 'app/views/pages/users/aa.html'
+		templateUrl: 'app/views/pages/users/aa.html',
+		controller: 'addCtrl',
+		controllerAs: 'add'
 	});
-	$routeProvider.when('/logout',{
-            templateUrl:'app/views/pages/users/logout.html'
-    	});
-    	$routeProvider.when('/profile',{
+	
+	$routeProvider.when('/logout', {
+		templateUrl: 'app/views/pages/users/logout.html'
+	});
+	
+	$routeProvider.when('/profile',{
             templateUrl:'app/views/pages/users/profile.html'
     	});
-	$routeProvider.otherwise({ redirectTo : '/'});
 	
 	$locationProvider.html5Mode({
 		enabled: true,
