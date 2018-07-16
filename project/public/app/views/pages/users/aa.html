@@ -7,19 +7,19 @@
 
 <center><h3>Add Accomplishments</h3><center>
 
-<div class="field">
+<div class="field"> 
 
 <center>
-<form>
+<form ng-submit="add.addAcc(addData);">
 
 <div class="text">
   <label>Title</label>
-  <input type="text" class="form-control" name="title" placeholder="Please enter the title.." required>
+  <input type="text" class="form-control" name="title" placeholder="Please enter the title.." ng-model="add.addData.title" required>
 </div>&emsp;
 
 <div class="text">  
   <label>Type</label>&emsp;</br>
-    <select class="form-control" required>
+    <select class="form-control" ng-model="add.addData.type" required>
        <option value="Badges" selected>Badges</option>
        <option value="Blog">Blog</option>
        <option value="Asset">Asset</option>
@@ -33,21 +33,29 @@
 
 <div class="text">
   <label>Date</label>
-  <input type="date" class="form-control" name="date" placeholder="Please enter the title.."  required>
+  <input type="date" class="form-control" name="date" placeholder="Please enter the title.." ng-model="add.addData.date" required>
 </div>&emsp;
 
 <div class="text">
   <label>URL</label>
-  <input type="url" class="form-control" name="url" placeholder="Please enter the url.." required>
+  <input type="url" class="form-control" name="url" placeholder="Please enter the url.." ng-model="add.addData.url" required>
 </div>&emsp;
 
 <div class="text">
   <label>Description</label>
-  <input type="text" size="100" class="form-control" name="desc" placeholder="Please enter the description.." required>
+  <input type="text" size="100" class="form-control" name="desc" placeholder="Please enter the description.." ng-model="add.addData.description" required>
 </div>&emsp;
 	
 <div class="text">
   <button class="button" type="submit">CREATE</button>
+</div>
+
+<div class="row show-hide-message" ng-show="add.successMsg">
+  <div class="alert alert-success" >{{ add.successMsg }}</div>
+</div>
+
+<div class="row show-hide-message" ng-show="add.errorMsg">
+  <div class="alert alert-danger" >{{ add.errorMsg }}</div>
 </div>
 
 </form>
