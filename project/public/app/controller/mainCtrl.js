@@ -31,7 +31,7 @@ angular.module('mainController', ['authServices'])
             //for loading full page in single instance 
             app.loadme = true;
         }
-    })
+    });
 
 	
 	this.doLogIn = function(loginData){
@@ -66,9 +66,9 @@ angular.module('mainController', ['authServices'])
         Auth.logout();
         $location.path('/logout');
         $timeout(function(){
-            $location.path('/');
+            $location.path('/login');
         },2000);
-    }
+    };
 
 });
 
