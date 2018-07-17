@@ -47,7 +47,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href='/profile' ng-show="main.isLoggedIn"> Hello {{ main.username }}</a></li>
+            <li><a href='/dash' ng-show="main.isLoggedIn"> Hello {{ main.username }}</a></li>
             <li class="active"><a href="/" ng-show="!main.isLoggedIn">Register</a></li>
             <li><a href="/login" ng-show="!main.isLoggedIn">Login</a></li>
             <li><a href="#" ng-click="main.logout()" ng-show="main.isLoggedIn">Logout</a></li>
