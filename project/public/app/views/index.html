@@ -31,7 +31,7 @@
 	<script src="app/services/authServices.js"></script>
 	<script src="app/services/addServices.js"></script>
 	
-	<title></title>
+	<title>Vitality-Tracker</title>
 
    
   </head>
@@ -53,7 +53,7 @@
 		    <li><a href='/dash' ng-show="main.isLoggedIn"> Hello {{ main.username }}</a></li>
             <li class="active"><a href="/" ng-show="!main.isLoggedIn">Register</a></li>
             <li><a href="/login" ng-show="!main.isLoggedIn">Login</a></li>
-			<li><a href="#" ng-click="main.logout();">Logout</a></li>
+			<li><a href="#" ng-click="main.logout();" ng-show="main.isLoggedIn">Logout</a></li>
             </li>
           </ul>
         </div>
