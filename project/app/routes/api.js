@@ -101,6 +101,8 @@ module.exports = function(router){
 		
 		add.title = req.body.title;
 		add.type = req.body.type;
+		add.patent = req.body.patent;
+		add.idea = req.body.idea;
 		add.date = req.body.date;
 		add.url = req.body.url;
 		add.description = req.body.description;
