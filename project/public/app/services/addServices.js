@@ -4,7 +4,7 @@ angular.module('addServices', [])
 	addFactory = {};
 	
 	addFactory.create = function(addData){
-		return $http.post('/api_1/adds', addData);
+		return $http.post('/api/adds', addData);
 	}
 	
 	return addFactory;
