@@ -94,15 +94,16 @@ module.exports = function(router){
 	//localhost:3000/api/adds
 	router.post('/adds', function(req, res){
 		var add = new Add();
+		
+		//username and role is fetched from main controller 
 		add.username = req.body.username;
+		add.role = req.body.role;
+		
 		add.title = req.body.title;
 		add.type = req.body.type;
 		add.date = req.body.date;
 		add.url = req.body.url;
 		add.description = req.body.description;
-
-		// var user = new User();
-		// user.accomplishment = add;
 
 		if(req.body.title == '' || req.body.title == null || req.body.type == null || req.body.date == null || req.body.date == '' || req.body.date == null || req.body.description == null){
 			 res.json({ success:false , message:'Please provide all fields.' });
