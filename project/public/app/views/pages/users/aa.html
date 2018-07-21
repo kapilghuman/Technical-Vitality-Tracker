@@ -11,7 +11,10 @@
 
 <center>
 <form ng-submit="add.addAcc(addData);">
-
+    <label> I am </label>&emsp;</br>
+    <select class="form-control" ng-model="add.addData.username" required>
+        <option value = {{ main.username }} selected> {{main.username}} </option>
+    </select>
 <div class="text">
   <label>Title</label>
   <input type="text" class="form-control" name="title" placeholder="Please enter the title.." ng-model="add.addData.title" required>
@@ -47,7 +50,7 @@
 </div>&emsp;
 	
 <div class="text">
-  <button class="button" type="submit">CREATE</button>
+  <button class="button" type="submit" >CREATE</button>
 </div>
 
 <div class="row show-hide-message" ng-show="add.successMsg">
