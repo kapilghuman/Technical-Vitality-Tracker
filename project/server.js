@@ -5,9 +5,7 @@ var morgan = require('morgan');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var router = express.Router();
-var route = express.Router();
 var appRoutes = require('./app/routes/api')(router);
-var appRoute = require('./app/routes/api_1')(route);
 var path = require('path');
 
 app.use(morgan('dev'));
@@ -15,7 +13,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended:true }));
 app.use(express.static(__dirname + '/public'));
 app.use('/api', appRoutes);
-app.use('/api_1', appRoute);
 
 mongoose.connect("mongodb://localhost:27017/employees",new function(err){
 	if(err){
