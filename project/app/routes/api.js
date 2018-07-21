@@ -1,4 +1,5 @@
 var User = require('../models/user');
+var Add = require('../models/add');
 var jwt = require('jsonwebtoken');
 var secret = "harrypotter";
 
@@ -89,6 +90,39 @@ module.exports = function(router){
     router.post('/me',function(req,res){
         res.send(req.decoded);
     });  
+
+	//localhost:3000/api/adds
+	router.post('/adds', function(req, res){
+		var add = new Add();
+		add.username = req.body.username;
+		add.title = req.body.title;
+		add.type = req.body.type;
+		add.date = req.body.date;
+		add.url = req.body.url;
+		add.description = req.body.description;
+
+		// var user = new User();
+		// user.accomplishment = add;
+
+		if(req.body.title == '' || req.body.title == null || req.body.type == null || req.body.date == null || req.body.date == '' || req.body.date == null || req.body.description == null){
+			 res.json({ success:false , message:'Please provide all fields.' });
+		} 
+		
+		else{
+			console.log("Current logged in username is =>",req.body.username);
+			add.save(function(err){
+				console.log("entered in user.accc.save");
+			 if(err){
+				res.json({ success:false , message:'Title already exists !!' });
+			 }
+			 else{
+				res.json({ success:true , message:'ACCOMPLISHMENT has been added!!' });
+			 }
+			});
+		}
+		
+		});
+  	
   
   return router;
 }
