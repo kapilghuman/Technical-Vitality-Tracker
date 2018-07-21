@@ -4,8 +4,8 @@ var Schema = mongoose.Schema;
 var AddSchema = new Schema({
 	username :{type:String , required:true},
 	role : {type:String , required:true},
-	title: { type:String, required:true, lowercase:true, unique:true },
-	type: { type:String, required:true, lowercase:true},
+	title: { type:String, required:true, unique:true },
+	type: { type:String, required:true},
 	patent: { type:String },
 	idea: { type:String },
 	date: { type:Date, required:true },
