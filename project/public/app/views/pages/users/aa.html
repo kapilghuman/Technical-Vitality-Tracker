@@ -45,24 +45,24 @@
   </div>&emsp;
 	
   <div class="text" ng-if="add.addData.type == 'Patent'">  
-  <label>Patent</label>&emsp;</br>
-    <select class="form-control" name="patent" ng-model="add.addData.patent" required>
+  <label>Status</label>&emsp;</br>
+    <select class="form-control" name="status" ng-model="add.addData.status" required>
        <option value="Disclosure_Submitted" selected>Disclosure Submitted</option>
        <option value="Disclosure_Filed">Disclosure Filed</option>
        <option value="Patent_Submitted">Patent Submitted</option>
 	   <option value="Patent_Filed">Patent Filed</option>
      </select>
-  </div>&emsp;
+</div>&emsp;
 
-  <div class="text" ng-if="add.addData.type == 'Idea'">  
-  <label>Idea</label>&emsp;</br>
-    <select class="form-control" name="idea" ng-model="add.addData.idea" required>
+<div class="text" ng-if="add.addData.type == 'Idea'">  
+  <label>Status</label>&emsp;</br>
+    <select class="form-control" name="status" ng-model="add.addData.status" required>
        <option value="Idea_Submitted" selected>Idea Submitted</option>
        <option value="Idea_Rejected">Idea Rejected</option>
        <option value="Idea_Accepted">Idea Accepted</option>
 	   <option value="Idea_Published">Idea Published</option>
      </select>
-  </div>&emsp;	
+</div>&emsp;
 
   <div class="text">
     <label>Date</label>
