@@ -1,11 +1,16 @@
-ol
-each user in users
-    li Username = #{user.username}
-    li Title=#{user.title}
-    li Type=#{user.type}
-    li Patent=#{user.patent}
-    li Idea=#{user.idea}
-    li Data=#{user.date}
-    li Url=#{user.url}
-    li Description=#{user.description}
-    <br>
+
+table
+    thead
+      tr
+        th Title
+        th Type
+        th Date
+        th Status
+    tbody
+      each user, i in users
+        tr
+          td= user.title
+          td= user.type
+          td= user.date
+          td= user.status
+          
