@@ -6,8 +6,7 @@ var AddSchema = new Schema({
 	role : {type:String , required:true},
 	title: { type:String, required:true, unique:true },
 	type: { type:String, required:true},
-	patent: { type:String },
-	idea: { type:String },
+	status: { type:String },
 	date: { type:Date, required:true },
 	url: { type:String, required:true },
 	description: { type:String, required:true}
