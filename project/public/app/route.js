@@ -13,7 +13,9 @@ angular.module('appRoutes', ['ngRoute'])
 	});
 	
 	$routeProvider.when('/dash', {
-		templateUrl: 'app/views/pages/users/dash.html'
+		templateUrl: 'app/views/pages/users/dash.html',
+		controller: 'dashCtrl',
+        	controllerAs: 'dash'
 	});
 	
 	$routeProvider.when('/AddAccomplishments', {
