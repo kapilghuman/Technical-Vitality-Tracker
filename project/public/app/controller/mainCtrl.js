@@ -49,7 +49,7 @@ angular.module('mainController', ['authServices'])
 				//Redirect to Register Page
 				$timeout(function(){
 					$location.path('/dash'); 
-					app.loginData = "";
+					
 					app.successMsg = false;
 				}, 2000);
 			}
