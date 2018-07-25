@@ -124,6 +124,15 @@ module.exports = function(router){
 		}
 		
 		});
+	
+	router.get('/accomplishment', function(req, res) {
+        Add.find({}, function(err,accomplishments) {
+            if(err) throw err;
+            else{
+                res.json({ success: true, accomplishments: accomplishments });
+            }
+        });
+    });
   	
   
   return router;
