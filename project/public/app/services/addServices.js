@@ -7,5 +7,9 @@ angular.module('addServices', [])
 		return $http.post('/api/adds', addData);
 	}
 	
+	addFactory.getAccomplishments = function() {
+      		return $http.get('/api/accomplishment/');  
+    	};
+	
 	return addFactory;
 });
