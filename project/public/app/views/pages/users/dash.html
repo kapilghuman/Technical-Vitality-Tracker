@@ -5,16 +5,46 @@
 
 <body>&emsp;
 
-<center><h1>Dashboard</h1><center>
+<center><h1>Dashboard</h1></center>
 <br>
-
-  <form action="/view">
-        <div class="text">
-                <button class="button" type="submit"> Show Accomplishment </button>
-        </div>
-</form>
+  
 <a href="/profile"><h3>Profile : {{main.username}}</h3></a>
 <a href="/AddAccomplishments"><h3>Add Accomplishment</h3></a>
+  
+<br>
+
+<div class="page-header">
+    <h1>Accomplishments</h1>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <strong>Details</strong>
+    </div>
+    <table class="table">
+        <tr>
+            <th>Title</th>
+            <th>Type</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        <tr ng-repeat="accomplishment in dash.accomplishments">
+            <td>{{ accomplishment.title }}</td>
+            <td>{{ accomplishment.type }}</td>
+            <td>{{ accomplishment.date }}</td>
+            <td>{{ accomplishment.status }}</td>
+            <td>
+                <a href="#">
+                    <button type="button" class="btn btn-primary">Edit</button>
+                </a>
+                <a href="#">
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>
 
 
 </body>
