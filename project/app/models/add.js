@@ -9,7 +9,8 @@ var AddSchema = new Schema({
 	status: { type:String },
 	date: { type:Date, required:true },
 	url: { type:String, required:true },
-	description: { type:String, required:true}
+	description: { type:String, required:true},
+	points: { type:Number, required:true}
 });
 
 module.exports = mongoose.model('Add', AddSchema);
