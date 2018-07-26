@@ -8,9 +8,6 @@ var router = express.Router();
 var appRoutes = require('./app/routes/api')(router);
 var path = require('path');
 
-app.set('view engine','jade');
-app.set("views", path.join(__dirname + '/public/app', "views"));
-
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended:true }));
@@ -25,16 +22,6 @@ mongoose.connect("mongodb://localhost:27017/employees",new function(err){
 	else{
 		console.log("Connected");
 	}
-});
-
-app.get('/view',function(req,res){
-	var Add = require('./app/models/add');
-	Add.find({},function(err,docs){
-		if(err) { res.json(err); }
-		else {			
-			res.render('showAccomplishment',{users:docs});
-		}
-	});
 });
 
 app.get('/', function(req, res){
