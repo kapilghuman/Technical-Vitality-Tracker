@@ -11,21 +11,7 @@
 
 <center>
 <form ng-submit="add.addAcc(addData);">
-  <div class="text">
-    <label> I am </label>&emsp;</br>
-    <select class="form-control" ng-model="add.addData.username" required>
-        <option value = {{main.username}} selected> {{main.username}} </option>
-    </select>
-  </div>&emsp;
-  <br>
-	
-  <div class="text">
-    <label> Role </label>&emsp;</br>
-        <select class="form-control" ng-model="add.addData.role" required>
-            <option value = {{main.role}} selected> {{main.role}} </option>
-        </select>
-  </div>&emsp;
-  
+    
   <div class="text">
     <label>Title</label>
     <input type="text" class="form-control" name="title" placeholder="Please enter the title.." ng-model="add.addData.title" required>
