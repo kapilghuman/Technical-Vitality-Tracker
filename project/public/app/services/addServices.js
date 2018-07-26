@@ -11,5 +11,9 @@ angular.module('addServices', [])
       		return $http.get('/api/accomplishment/');  
     	};
 	
+	addFactory.deleteAccomplishment = function(title) {
+        return $http.delete('/api/accomplishment/' + title);
+    };
+	
 	return addFactory;
 });
