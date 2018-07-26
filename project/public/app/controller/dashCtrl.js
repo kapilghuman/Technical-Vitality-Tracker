@@ -3,12 +3,26 @@ angular.module('dashController', ['addServices'])
     var app = this;
     app.errorMsg=false;
     
-    Add.getAccomplishments().then(function(data) {
-        if(data.data.success){
-            app.accomplishments = data.data.accomplishments;
-        }
-        else{
-            app.errorMsg=data.data.message;
-        }
-    });
+    function getAccomplishments() {
+        Add.getAccomplishments().then(function(data) {
+            if(data.data.success){
+                app.accomplishments = data.data.accomplishments;
+            }
+            else{
+                app.errorMsg=data.data.message;
+            }
+        });
+    }
+    
+    getAccomplishments();
+    
+    app.deleteAccomplishment = function(title) {
+        Add.deleteAccomplishment(title).then(function(data) {
+            if(data.data.success){
+                getAccomplishments();
+            } else{
+                app.errorMsg=data.data.message;
+            }
+        });
+    }
 });
