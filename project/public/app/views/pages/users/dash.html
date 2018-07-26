@@ -37,17 +37,23 @@
     </div>
     <table class="table">
         <tr>
+            <th>Username</th>
+            <th>Role</th>
             <th>Title</th>
             <th>Type</th>
             <th>Date</th>
             <th>Status</th>
+            <th>Points</th>
             <th>Action</th>
         </tr>
         <tr ng-repeat="accomplishment in dash.accomplishments">
+                <td>{{ accomplishment.username }}</td>
+            <td>{{ accomplishment.role }}</td>
             <td>{{ accomplishment.title }}</td>
             <td>{{ accomplishment.type }}</td>
             <td>{{ accomplishment.date }}</td>
             <td>{{ accomplishment.status }}</td>
+            <td>{{ accomplishment.points }}</td>
             <td>
                 <a href="#">
                     <button type="button" class="btn btn-primary">Edit</button>
