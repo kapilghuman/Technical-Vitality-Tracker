@@ -126,10 +126,10 @@ module.exports = function(router){
 		});
 	
 	router.get('/accomplishment', function(req, res) {
-		
+
 		if(req.decoded.role =='Normal_user'){
 
-			Add.find({ username : req.decoded.username},function(err,accomplishments) {
+			Add.find({ username : req.decoded.username}).select().sort({title : 1}).exec(function(err,accomplishments) {
 				if(err) {res.json({success:false , errorMsg: err})}
 				else{	
 					res.json({ success: true, accomplishments: accomplishments });
@@ -138,7 +138,7 @@ module.exports = function(router){
 		}
 
 		else if(req.decoded.role =='SPOC/Manager'){
-			Add.find({ $or:[ {'username': req.decoded.username }, {'role': 'Normal_user'} ]},function(err,accomplishments) {
+			Add.find({ $or:[ {'username': req.decoded.username }, {'role': 'Normal_user'} ]}).select().sort({username : 1,role:-1,title:1}).exec(function(err,accomplishments) {
 				if(err) throw err;
 				else{
 					res.json({ success: true, accomplishments: accomplishments });
@@ -147,7 +147,7 @@ module.exports = function(router){
 		}
 
 		else{
-			Add.find({},function(err,accomplishments) {
+			Add.find({}).select().sort({username : 1,role:-1,title : 1}).exec(function(err,accomplishments) {
 				if(err) throw err;
 				else{
 					res.json({ success: true, accomplishments: accomplishments });
@@ -155,7 +155,6 @@ module.exports = function(router){
 			})
 		}
     });
-
 	
   	router.delete('/accomplishment/:title', function(req,res) {
         var deletedTitle = req.params.title;
