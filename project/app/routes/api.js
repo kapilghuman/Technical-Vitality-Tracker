@@ -126,13 +126,36 @@ module.exports = function(router){
 		});
 	
 	router.get('/accomplishment', function(req, res) {
-        Add.find({}, function(err,accomplishments) {
-            if(err) throw err;
-            else{
-                res.json({ success: true, accomplishments: accomplishments });
-            }
-        });
+		
+		if(req.decoded.role =='Normal_user'){
+
+			Add.find({ username : req.decoded.username},function(err,accomplishments) {
+				if(err) {res.json({success:false , errorMsg: err})}
+				else{	
+					res.json({ success: true, accomplishments: accomplishments });
+				}
+			})
+		}
+
+		else if(req.decoded.role =='SPOC/Manager'){
+			Add.find({ $or:[ {'username': req.decoded.username }, {'role': 'Normal_user'} ]},function(err,accomplishments) {
+				if(err) throw err;
+				else{
+					res.json({ success: true, accomplishments: accomplishments });
+				}
+			})
+		}
+
+		else{
+			Add.find({},function(err,accomplishments) {
+				if(err) throw err;
+				else{
+					res.json({ success: true, accomplishments: accomplishments });
+				}
+			})
+		}
     });
+
 	
   	router.delete('/accomplishment/:title', function(req,res) {
         var deletedTitle = req.params.title;
