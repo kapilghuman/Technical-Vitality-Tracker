@@ -138,7 +138,7 @@ module.exports = function(router){
 		}
 
 		else if(req.decoded.role =='SPOC/Manager'){
-			Add.find({ $or:[ {'username': req.decoded.username }, {'role': 'Normal_user'} ]}).select().sort({username : 1,role:-1,title:1}).exec(function(err,accomplishments) {
+			Add.find({ $or:[ {'username': req.decoded.username }, {'role': 'Normal_user'} ]}).select().sort({role:-1,username : 1,title : 1}).exec(function(err,accomplishments) {
 				if(err) throw err;
 				else{
 					res.json({ success: true, accomplishments: accomplishments });
@@ -147,7 +147,7 @@ module.exports = function(router){
 		}
 
 		else{
-			Add.find({}).select().sort({username : 1,role:-1,title : 1}).exec(function(err,accomplishments) {
+			Add.find({}).select().sort({role:-1,username : 1,title : 1}).exec(function(err,accomplishments) {
 				if(err) throw err;
 				else{
 					res.json({ success: true, accomplishments: accomplishments });
