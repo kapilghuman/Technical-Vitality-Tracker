@@ -106,7 +106,7 @@ module.exports = function(router){
 		add.url = req.body.url;
 		add.description = req.body.description;
 
-		if(req.body.title == '' || req.body.title == null || req.body.type == null || req.body.date == null || req.body.date == '' || req.body.date == null || req.body.description == null){
+		if(req.body.username == '' || req.body.username == null || req.body.role == '' ||  req.body.role == null || req.body.title == '' || req.body.title == null || req.body.type == null || req.body.date == null || req.body.date == '' || req.body.date == null || req.body.description == null){
 			 res.json({ success:false , message:'Please provide all fields.' });
 		} 
 		
