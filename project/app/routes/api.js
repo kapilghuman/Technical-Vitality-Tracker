@@ -133,7 +133,14 @@ module.exports = function(router){
             }
         });
     });
-  	
+	
+  	router.delete('/accomplishment/:title', function(req,res) {
+        var deletedTitle = req.params.title;
+            Add.findOneAndRemove({ title: deletedTitle}, function(err,user) {
+                if(err) throw err;
+                res.json({ success: true });
+            });
+    });
   
   return router;
 }
