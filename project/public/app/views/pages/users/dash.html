@@ -2,10 +2,24 @@
 <html class="html">
 
 <link rel="stylesheet" href="assets/css/style.css">
+  
+<style>
+    h1 {
+    text-decoration: underline;
+    font-style: italic;
+    }
+    
+    h2 {
+    color: green;
+    text-decoration: underline;
+    }
+    
+    
+</style>
 
 <body>&emsp;
 
-<center><h1>Dashboard</h1></center>
+<center><strong><h1>Dashboard</h1></strong></center>
 <br>
   
 <a href="/profile"><h3>Profile : {{main.username}}</h3></a>
@@ -14,12 +28,12 @@
 <br>
 
 <div class="page-header">
-    <h1>Accomplishments</h1>
+  <center><h2>Accomplishments</h2></center>
 </div>
 
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <strong>Details</strong>
+      <center><strong>Details</strong></center>
     </div>
     <table class="table">
         <tr>
@@ -39,7 +53,7 @@
                     <button type="button" class="btn btn-primary">Edit</button>
                 </a>
                 <a href="#">
-                    <button type="button" class="btn btn-danger">Delete</button>
+                    <button type="button" ng-click="dash.deleteAccomplishment( accomplishment.title);" class="btn btn-danger">Delete</button>
                 </a>
             </td>
         </tr>
