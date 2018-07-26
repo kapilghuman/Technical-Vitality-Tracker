@@ -2,6 +2,8 @@ var User = require('../models/user');
 var Add = require('../models/add');
 var jwt = require('jsonwebtoken');
 var secret = "harrypotter";
+var temp_username='';
+var temp_role='';
 
 
 module.exports = function(router){
@@ -33,6 +35,7 @@ module.exports = function(router){
   //USER LOGIN ROUTE
   //http://localhost:port/api/authenticate
   
+  
   router.post('/authenticate', function(req, res){
 	 User.findOne({ username: req.body.username }).select('username userId password role').exec(function(err, user){
 		if(err) throw err; 
@@ -62,6 +65,9 @@ module.exports = function(router){
                 		res.json({success:false,message:'Could not authenticate role'});   
             		}
             		else{
+
+						this.temp_role=req.body.role;
+						this.temp_username=req.body.username;
             			var token=jwt.sign({username:user.username, userId:user.userId, role:user.role },secret, { expiresIn : '24h' } );
                 		res.json({success:true,message:"User authenticated ",token:token});
             		}
@@ -94,19 +100,27 @@ module.exports = function(router){
 	//localhost:3000/api/adds
 	router.post('/adds', function(req, res){
 		var add = new Add();
-		
-		//username and role is fetched from main controller 
-		add.username = req.body.username;
-		add.role = req.body.role;
+
+		add.username = req.decoded.username;
+		add.role = req.decoded.role;
 		
 		add.title = req.body.title;
 		add.type = req.body.type;
+		if(add.type == 'Badges' || add.type == 'Blog' ){
+			add.points = 1;
+		}
+		else if(add.type == 'Idea' || add.type == 'Patent' ){
+			add.points = 2;
+		}
+		else{
+			add.points = 3;
+		}
 		add.status = req.body.status;
 		add.date = req.body.date;
 		add.url = req.body.url;
 		add.description = req.body.description;
 
-		if(req.body.username == '' || req.body.username == null || req.body.role == '' ||  req.body.role == null || req.body.title == '' || req.body.title == null || req.body.type == null || req.body.date == null || req.body.date == '' || req.body.date == null || req.body.description == null){
+		if(req.body.title == '' || req.body.title == null || req.body.type == null || req.body.date == null || req.body.date == '' || req.body.date == null || req.body.description == null){
 			 res.json({ success:false , message:'Please provide all fields.' });
 		} 
 		
@@ -135,12 +149,14 @@ module.exports = function(router){
 					res.json({ success: true, accomplishments: accomplishments });
 				}
 			})
+
 		}
 
 		else if(req.decoded.role =='SPOC/Manager'){
-			Add.find({ $or:[ {'username': req.decoded.username }, {'role': 'Normal_user'} ]}).select().sort({role:-1,username : 1,title : 1}).exec(function(err,accomplishments) {
+			Add.find({ $or:[ {'username': req.decoded.username }, {'role': 'Normal_user'} ]}).select().sort({role:-1,username : 1,title:1}).exec(function(err,accomplishments) {
 				if(err) throw err;
 				else{
+					
 					res.json({ success: true, accomplishments: accomplishments });
 				}
 			})
@@ -155,8 +171,8 @@ module.exports = function(router){
 			})
 		}
     });
-	
-  	router.delete('/accomplishment/:title', function(req,res) {
+	  
+	router.delete('/accomplishment/:title',function(req,res) {
         var deletedTitle = req.params.title;
             Add.findOneAndRemove({ title: deletedTitle}, function(err,user) {
                 if(err) throw err;
