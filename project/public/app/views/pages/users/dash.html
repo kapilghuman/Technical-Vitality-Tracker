@@ -16,14 +16,15 @@
     
     
 </style>
-
 <body>&emsp;
+        
 
-<center><strong><h1>Dashboard</h1></strong></center>
+<center><strong><h1>Dashboard</h1></strong>
 <br>
   
 <a href="/profile"><h3>Profile : {{main.username}}</h3></a>
 <a href="/AddAccomplishments"><h3>Add Accomplishment</h3></a>
+</center>
   
 <br>
 
@@ -39,9 +40,9 @@
     <button ng-click="exportTableToExcel('EmployeeData', 'members-data')" class="btn btn-danger" >Export Table Data To Excel File</button>
     <br>
     <br>
-
-    <table id='EmployeeData' class="table">
-        <tr>
+<div width="100%">
+    <table width="70%" align="left" id='EmployeeData' >
+        <tr >
             <th>Username</th>
             <th>Role</th>
             <th>Title</th>
@@ -49,9 +50,8 @@
             <th>Date</th>
             <th>Status</th>
             <th>Points</th>
-            <th>Action</th>
         </tr>
-        <tr ng-repeat="accomplishment in dash.accomplishments">
+        <tr height="60" ng-repeat="accomplishment in dash.accomplishments">
                 <td>{{ accomplishment.username }}</td>
             <td>{{ accomplishment.role }}</td>
             <td>{{ accomplishment.title }}</td>
@@ -59,19 +59,25 @@
             <td>{{ accomplishment.date }}</td>
             <td>{{ accomplishment.status }}</td>
             <td>{{ accomplishment.points }}</td>
-            <td>
-                <a href="#">
-                    <button type="button" class="btn btn-primary">Edit</button>
-                </a>
-                <a href="#">
-                    <button type="button" ng-click="dash.deleteAccomplishment( accomplishment.title);" class="btn btn-danger">Delete</button>
-                </a>
-            </td>
+        </tr>
+    </table >
+    <table width="20%" align="right">
+        <tr>
+            <th>Action</th>
+        </tr>
+        <tr height="60" ng-repeat="accomplishment in dash.accomplishments">
+                <td>
+                        <a href="#">
+                            <button type="button" class='btn btn-success'>Edit</button>
+                        </a>
+                        <a href="#">
+                            <button type="button" ng-click="dash.deleteAccomplishment( accomplishment.title);" class='btn btn-danger'>Delete</button>
+                        </a>
+                    </td>
         </tr>
     </table>
 </div>
-
-
+ </div>
 </body>
 
 </html>
