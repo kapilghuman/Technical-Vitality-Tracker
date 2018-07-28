@@ -1,5 +1,5 @@
 angular.module('dashController', ['addServices'])
-.controller('dashCtrl', function(Add) {
+.controller('dashCtrl', function(Add , $scope) {
     var app = this;
     app.errorMsg=false;
     
