@@ -35,7 +35,12 @@
     <div class="panel-heading">
       <center><strong>Details</strong></center>
     </div>
-    <table class="table">
+    <br>
+    <button ng-click="exportTableToExcel('EmployeeData', 'members-data')" class="btn btn-danger" >Export Table Data To Excel File</button>
+    <br>
+    <br>
+
+    <table id='EmployeeData' class="table">
         <tr>
             <th>Username</th>
             <th>Role</th>
