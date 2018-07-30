@@ -246,7 +246,7 @@ module.exports = function(router){
 		console.log("to dates value "+req.body.to)
 		console.log('you are in get method')
 
-		Add.find({}).select().exec(function(err,accomplishments) {
+		Add.find({date:{$gt:req.body.from,$lt:req.body.from}}).select().exec(function(err,accomplishments) {
 			if(err) {res.json({success:false , errorMsg: err})}
 			else{	
 				res.json({ success: true, accomplishments: accomplishments });
