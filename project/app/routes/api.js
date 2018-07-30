@@ -184,6 +184,64 @@ module.exports = function(router){
 		}
     });
 	  
+	router.get('/edit/:id', function(req, res){
+		var editStatus = req.params.id;
+		    Add.findOne({ username: req.decoded.username }, function(err, user){
+				if(err) throw err;
+				if(!user){
+					res.json({ success: false, message: "No user Found"});
+				}
+				
+				else{
+				  Add.findOne({_id: editStatus}, function(err, users){
+					if(err) throw err;
+					if(!users){
+						res.json({ success: false, message: "No user Found"});
+					}
+					
+					else{
+						res.json({ success: true, users: users});
+					}
+				  });
+				}
+			});
+	});
+	
+	router.put('/edit', function(req, res){
+		var editStatus = req.body._id;
+		    if(req.body.status) var newStatus = req.body.status;
+			
+		    Add.findOne({ username: req.decoded.username }, function(err, user){
+				if(err) throw err;
+				if(!user){
+					res.json({ success: false, message: "No user Found"});
+				}
+				
+				else{
+					if(newStatus){
+						Add.findOne({ _id: editStatus }, function(err, users){
+					     if(err) throw err;
+					     if(!users){
+						 res.json({ success: false, message: "No user Found"});
+					     }
+					
+					     else{
+						   users.status = newStatus;
+							 users.save(function(err){
+								 if(err){
+									 throw err;
+								 }
+								 else{
+									 res.json({ success: true, message: "Status is Updated"}); 
+								 }
+							 });
+					        }
+				        });
+				    }
+			    }
+			});
+	});
+	  
 	router.delete('/accomplishment/:title',function(req,res) {
         var deletedTitle = req.params.title;
             Add.findOneAndRemove({ title: deletedTitle}, function(err,user) {
@@ -191,6 +249,7 @@ module.exports = function(router){
                 res.json({ success: true });
             });
     });
+	
   
 	router.post('/performer', function(req, res) {
 
