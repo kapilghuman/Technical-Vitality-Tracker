@@ -64,7 +64,7 @@
             <td>{{ accomplishment.points }}</td>
             <td>
                 <a href="/edit/{{ accomplishment._id }}">
-                    <button type="button" class="btn btn-primary">Edit</button>
+                    <button type="button" ng-disabled="{{ accomplishment.status===idea || accomplishment.status===patent }}" class="btn btn-primary">Edit</button>
                 </a>
                 <a href="#">
                     <button type="button" ng-click="dash.deleteAccomplishment( accomplishment.title);" class="btn btn-danger">Delete</button>
