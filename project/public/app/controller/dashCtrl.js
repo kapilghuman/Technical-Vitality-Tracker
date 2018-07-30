@@ -56,4 +56,61 @@ angular.module('dashController', ['addServices'])
             }
         });
     }
+})
+
+.controller('editCtrl', function($scope, $routeParams, Add, $timeout){
+	var app = this;
+	$scope.usernameTab = "active";
+	
+	Add.getStatus($routeParams.id).then(function(data){
+		if(data.data.success){
+			$scope.newStatus = data.data.users.status;
+			app.currentStatus = data.data.users._id;
+		}
+		
+		else{
+			app.errorMsg = data.data.message;
+		}
+	});
+	
+	app.usernamePhase = function(){
+		$scope.usernameTab = "default";
+		$scope.titleTab = "default";
+		$scope.statusTab = "active";
+		$scope.permissionTab = "default";
+	};
+	
+	app.updateStatus = function(newStatus, valid){
+		app.errorMsg = false;
+		app.disabled = true;
+		var userObject = {};
+		
+		if(valid){
+			userObject._id = app.currentStatus;
+			userObject.status = $scope.newStatus;
+			Add.editStatus(userObject).then(function(data){
+				if(data.data.success){
+					app.successMsg = data.data.message;
+					$timeout(function(){
+						app.nameForm.status.$setPristine();
+						app.nameForm.status.$setUntouched();
+						
+						app.errorMsg = false;
+						app.disabled = false;
+					}, 2000);
+				}
+				
+				else{
+					app.errorMsg = data.data.message;
+					app.disabled = false;
+				}
+			});
+		}
+		
+		else{
+			app.errorMsg = "Please ensure that status is updates correctly";
+			app.disabled = false;
+		}
+	};
+	
 });
