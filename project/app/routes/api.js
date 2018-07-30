@@ -113,21 +113,9 @@ module.exports = function(router){
 		}
 
 		else if(add.type == 'Idea' || add.type == 'Patent' ){
-
-			if(add.status == 'Idea_Accepted' || add.status == 'Patent_Submitted' || add.status == 'Disclosure_Submitted'){
-				add.points = 4;
-			}
-			else if(add.status == 'Idea_Rejected'){
-				add.points = 0;
-			}
-			else if(add.status == 'Idea_Published'){
-				add.points = 5;
-			}
-			else{
 				add.points = 2;
-			}
-			
 		}
+			
 		else{
 			add.points = 3;
 		}
