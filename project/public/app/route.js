@@ -18,6 +18,12 @@ angular.module('appRoutes', ['ngRoute'])
         	controllerAs: 'dash'
 	});
 	
+	$routeProvider.when('/edit/:id', {
+		templateUrl: 'app/views/pages/users/edit.html',
+		controller: 'editCtrl',
+                controllerAs: 'edit'
+	});
+	
 	$routeProvider.when('/AddAccomplishments', {
 		templateUrl: 'app/views/pages/users/aa.html',
 		controller: 'addCtrl',
