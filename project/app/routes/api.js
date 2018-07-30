@@ -2,9 +2,6 @@ var User = require('../models/user');
 var Add = require('../models/add');
 var jwt = require('jsonwebtoken');
 var secret = "harrypotter";
-var temp_username='';
-var temp_role='';
-
 
 module.exports = function(router){
 	//USER REGISTRATION ROUTE
