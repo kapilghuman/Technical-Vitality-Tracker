@@ -58,7 +58,7 @@ angular.module('dashController', ['addServices'])
     }
 })
 
-.controller('editCtrl', function($scope, $routeParams, Add, $timeout){
+.controller('editCtrl', function($scope, $routeParams, Add, $timeout, $location){
 	var app = this;
 	$scope.usernameTab = "active";
 	
@@ -97,6 +97,8 @@ angular.module('dashController', ['addServices'])
 						
 						app.errorMsg = false;
 						app.disabled = false;
+						
+						$location.path('/dash');
 					}, 2000);
 				}
 				
