@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="assets/css/style.css">
+
+<body>&emsp;
+
+<center><strong><h1>Dashboard</h1></strong></center>
+<br>
+
+<ul class="nav nav-tabs">
+   <li role="presentation" ng-click="edit.usernamePhase();" ng-class="usernameTab"><a href="#"> Details </a> </li>&emsp;
+</ul>
+
+<form name="edit.nameForm" ng-submit="edit.updateStatus(newStatus, edit.nameForm.status.$valid);" novalidate>
+ 
+  <label>Status</label>&emsp;</br>
+    <select class="form-control" name="status" ng-model="newStatus" required>
+       <option value="Disclosure_Submitted" selected>Disclosure Submitted</option>
+       <option value="Disclosure_Filed">Disclosure Filed</option>
+       <option value="Patent_Submitted">Patent Submitted</option>
+	   <option value="Patent_Filed">Patent Filed</option>
+     </select>
+ 
+  <label>Status</label>&emsp;</br>
+    <select class="form-control" name="status" ng-model="newStatus" required>
+       <option value="Idea_Submitted" selected>Idea Submitted</option>
+       <option value="Idea_Rejected">Idea Rejected</option>
+       <option value="Idea_Accepted">Idea Accepted</option>
+	   <option value="Idea_Published">Idea Published</option>
+     </select>
+
+
+ <div class="text">
+    <button class="button" type="submit">Update</button>
+  </div>
+  
+ <div class="row show-hide-message" ng-show="edit.successMsg">
+    <div class="alert alert-success" >{{ edit.successMsg }}</div>
+  </div>
+
+  <div class="row show-hide-message" ng-show="add.errorMsg">
+    <div class="alert alert-danger" >{{ edit.errorMsg }}</div>
+  </div>
+  
+</form>
+
+</body>
+</html>
