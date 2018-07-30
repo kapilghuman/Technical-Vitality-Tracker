@@ -32,6 +32,12 @@ angular.module('appRoutes', ['ngRoute'])
             templateUrl:'app/views/pages/users/profile.html'
     	});
 	
+	$routeProvider.when('/top', {
+		templateUrl: 'app/views/pages/users/top.html',
+		controller: 'topCtrl',
+			controllerAs: 'top'
+	});
+	
 	$locationProvider.html5Mode({
 		enabled: true,
 		requireBase: false
