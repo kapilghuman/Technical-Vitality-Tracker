@@ -105,20 +105,35 @@ module.exports = function(router){
 		add.role = req.decoded.role;
 		
 		add.title = req.body.title;
-		add.type = req.body.type;
-		if(add.type == 'Badges' || add.type == 'Blog' ){
-			add.points = 1;
-		}
-		else if(add.type == 'Idea' || add.type == 'Patent' ){
-			add.points = 2;
-		}
-		else{
-			add.points = 3;
-		}
+		add.type = req.body.type;		
 		add.status = req.body.status;
 		add.date = req.body.date;
 		add.url = req.body.url;
 		add.description = req.body.description;
+
+		if(add.type == 'Badges' || add.type == 'Blog' ){
+			add.points = 1;
+		}
+
+		else if(add.type == 'Idea' || add.type == 'Patent' ){
+
+			if(add.status == 'Idea_Accepted' || add.status == 'Patent_Submitted' || add.status == 'Disclosure_Submitted'){
+				add.points = 4;
+			}
+			else if(add.status == 'Idea_Rejected'){
+				add.points = 0;
+			}
+			else if(add.status == 'Idea_Published'){
+				add.points = 5;
+			}
+			else{
+				add.points = 2;
+			}
+			
+		}
+		else{
+			add.points = 3;
+		}
 
 		if(req.body.title == '' || req.body.title == null || req.body.type == null || req.body.date == null || req.body.date == '' || req.body.date == null || req.body.description == null){
 			 res.json({ success:false , message:'Please provide all fields.' });
@@ -127,7 +142,7 @@ module.exports = function(router){
 		else{
 			console.log("Current logged in username is =>",req.body.username);
 			add.save(function(err){
-				console.log("entered in user.accc.save");
+				console.log("req.body.title");
 			 if(err){
 				res.json({ success:false , message:'Title already exists !!' });
 			 }
@@ -180,8 +195,6 @@ module.exports = function(router){
             });
     });
   
-	
- // Top Performer Route
 	router.post('/performer', function(req, res) {
 
 		console.log('you are in get method')
@@ -194,9 +207,9 @@ module.exports = function(router){
 			else{	
 				res.json({ success: true, accomplishments: accomplishments });
 			}
-		});
+		})
 
-	});
+		});
 
   return router;
 }
