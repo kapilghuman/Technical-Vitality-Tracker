@@ -140,9 +140,9 @@ module.exports = function(router){
 		} 
 		
 		else{
-			console.log("Current logged in username is =>",req.body.username);
+			//console.log("Current logged in username is =>",req.decoded.username);
 			add.save(function(err){
-				console.log("req.body.title");
+				//console.log("Title is "+req.body.title);
 			 if(err){
 				res.json({ success:false , message:'Title already exists !!' });
 			 }
