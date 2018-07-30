@@ -180,5 +180,23 @@ module.exports = function(router){
             });
     });
   
+	
+ // Top Performer Route
+	router.post('/performer', function(req, res) {
+
+		console.log('you are in get method')
+		console.log("from dates value "+req.body.from)
+		console.log("to dates value "+req.body.to)
+		console.log('you are in get method')
+
+		Add.find({}).select().exec(function(err,accomplishments) {
+			if(err) {res.json({success:false , errorMsg: err})}
+			else{	
+				res.json({ success: true, accomplishments: accomplishments });
+			}
+		});
+
+	});
+
   return router;
 }
