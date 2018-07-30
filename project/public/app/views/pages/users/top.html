@@ -1,0 +1,40 @@
+<h1>Welcome to top Html page</h1> 
+
+<form ng-submit="top.getDates(dates);">
+<div class="text">
+    <label>From</label>
+    <input type="date" class="form-control" name="from" placeholder="From-date" ng-model="top.dates.from" required>
+  </div>&emsp;
+
+  <div class="text">
+    <label>To</label>
+    <input type="date" class="form-control" name="to" placeholder="to-Date" ng-model="top.dates.to" required>
+  </div>&emsp;
+
+  <div class="text">
+        <button class="button" type="submit">Submit</button>
+      </div>
+
+</form>
+
+<table class='table'>
+        <tr>
+            <th>Username</th>
+            <th>Role</th>
+            <th>Title</th>
+            <th>Type</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Points</th>
+        </tr>
+        <tr ng-repeat="accomplishment in top.accomplishments">
+                <td>{{ accomplishment.username }}</td>
+            <td>{{ accomplishment.role }}</td>
+            <td>{{ accomplishment.title }}</td>
+            <td>{{ accomplishment.type }}</td>
+            <td>{{ accomplishment.date }}</td>
+            <td>{{ accomplishment.status }}</td>
+            <td>{{ accomplishment.points }}</td>
+            
+        </tr>
+    </table >
