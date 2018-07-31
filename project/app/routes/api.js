@@ -143,7 +143,7 @@ module.exports = function(router){
 
 		if(req.decoded.role =='Normal_user'){
 
-			Add.find({ username : req.decoded.username}).select().sort({title : 1}).exec(function(err,accomplishments) {
+			Add.find({ username : req.decoded.username}).select().sort({date : -1}).exec(function(err,accomplishments) {
 				if(err) {res.json({success:false , errorMsg: err})}
 				else{	
 					res.json({ success: true, accomplishments: accomplishments });
@@ -153,7 +153,7 @@ module.exports = function(router){
 		}
 
 		else if(req.decoded.role =='SPOC/Manager'){
-			Add.find({ $or:[ {'username': req.decoded.username }, {'role': 'Normal_user'} ]}).select().sort({role:-1,username : 1,title:1}).exec(function(err,accomplishments) {
+			Add.find({ $or:[ {'username': req.decoded.username }, {'role': 'Normal_user'} ]}).select().sort({role:-1,username : 1,date:-1}).exec(function(err,accomplishments) {
 				if(err) throw err;
 				else{
 					
@@ -163,7 +163,7 @@ module.exports = function(router){
 		}
 
 		else{
-			Add.find({}).select().sort({role:-1,username : 1,title : 1}).exec(function(err,accomplishments) {
+			Add.find({}).select().sort({role:-1,username : 1,date : -1}).exec(function(err,accomplishments) {
 				if(err) throw err;
 				else{
 					res.json({ success: true, accomplishments: accomplishments });
@@ -246,12 +246,23 @@ module.exports = function(router){
 		console.log("to dates value "+req.body.to)
 		console.log('you are in get method')
 
-		Add.find({date:{$gt:req.body.from,$lt:req.body.to}}).select().exec(function(err,accomplishments) {
+		Add.aggregate([{$match:{date:{$gt : new Date(req.body.from) ,$lt : new Date(req.body.to)}}},
+			{$group:{
+				_id:'$username',
+				total:{$sum:'$points'}
+			}},
+			{"$sort": { "total": -1 } },
+			       
+        		// Optionally limit results
+			{ "$limit": 1 }],
+
+			function(err,accomplishments) {
 			if(err) {res.json({success:false , errorMsg: err})}
 			else{	
+				console.log(accomplishments);
 				res.json({ success: true, accomplishments: accomplishments });
 			}
-		})
+		});
 
 		});
 
