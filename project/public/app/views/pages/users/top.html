@@ -1,4 +1,31 @@
-<h1>Welcome to top Html page</h1> 
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+    h1 {
+    text-decoration: underline;
+    font-style: italic;
+    }
+    
+    h2 {
+    color: green;
+    text-decoration: underline;
+    }
+    
+    
+</style>
+
+<div class="page-header">
+  <center><h2>Top Performer</h2></center>
+</div>
+
+<center>
+
+<div class="field"> 
+<center>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <center><strong>Dates</strong></center>
+    </div>
+    <br>
 
 <form ng-submit="top.getDates(dates);">
 <div class="text">
@@ -10,12 +37,20 @@
     <label>To</label>
     <input type="date" class="form-control" name="to" placeholder="to-Date" ng-model="top.dates.to" required>
   </div>&emsp;
+    
+    <br>
 
   <div class="text">
-        <button class="button" type="submit">Submit</button>
+        <button class="btn btn-primary" type="submit">Search</button>
       </div>
 
 </form>
+    </div>
+</center>
+</div>
+</center>
+
+<br>
 
 <h3>Username = <div ng-repeat="accomplishment in top.accomplishments">{{accomplishment._id}}</div></h3>
 
