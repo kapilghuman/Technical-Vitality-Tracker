@@ -13,6 +13,14 @@ angular.module('mainController', ['authServices'])
                 
                 // to check user is logged in or not !!
                 app.isLoggedIn = true;
+		 
+		// check role for diplaying Top performer button
+                if(data.data.role == "SPOC/Manager" || data.data.role == "Tech_Council_Member"){
+                    app.trueRole = true;
+                }
+                else{
+                    app.trueRole = false;
+                }
 
                 // assigning data to variables (DATABASE)
                 app.username = data.data.username;
