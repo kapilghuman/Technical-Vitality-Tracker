@@ -245,24 +245,48 @@ module.exports = function(router){
 		console.log("from dates value "+req.body.from)
 		console.log("to dates value "+req.body.to)
 		console.log('you are in get method')
+		if(req.decoded.role =='SPOC/Manager'){
+			Add.aggregate([
+				{$match:{	 $and: [ 
+					{date:{$gt : new Date(req.body.from) ,$lt : new Date(req.body.to)}},  
+					{ $or:[ {username : req.decoded.username }, {role: 'Normal_user'} ]}
+				]
+				}},
+				{$group : {
+				_id : { username: "$username", role: "$role" },
+				total : {$sum : '$points'}
+			}}
+			 ,{"$sort": { "total": -1 ,"_id.role":-1 } }
+			 // Optionally limit results
+			,{ "$limit": 1 }
+		],function(err,accomplishments) {
+				if(err) {res.json({success:false , errorMsg: err})}
+				else{	
+					console.log(accomplishments);
+					res.json({ success: true, accomplishments: accomplishments });
+				}
+			});
+		}
 
-		Add.aggregate([{$match:{date:{$gt : new Date(req.body.from) ,$lt : new Date(req.body.to)}}},
-			{$group:{
-				_id:'$username',
-				total:{$sum:'$points'}
-			}},
-			{"$sort": { "total": -1 } },
-			       
-        		// Optionally limit results
-			{ "$limit": 1 }],
-
-			function(err,accomplishments) {
-			if(err) {res.json({success:false , errorMsg: err})}
-			else{	
-				console.log(accomplishments);
-				res.json({ success: true, accomplishments: accomplishments });
-			}
-		});
+		else{
+			Add.aggregate([
+				{$match:{date:{$gt : new Date(req.body.from) ,$lt : new Date(req.body.to)}}},
+				{$group : {
+				_id : { username: "$username", role: "$role" },
+				total : {$sum : '$points'}
+			}}
+			 ,{"$sort": { "total": -1 ,"_id.role":-1} }
+			 // Optionally limit results
+			,{ "$limit": 1 }
+		],function(err,accomplishments) {
+				if(err) {res.json({success:false , errorMsg: err})}
+				else{	
+					console.log(accomplishments);
+					res.json({ success: true, accomplishments: accomplishments });
+				}
+			});
+		}
+		
 
 		});
 
