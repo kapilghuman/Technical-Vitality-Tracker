@@ -254,7 +254,8 @@ module.exports = function(router){
 				}},
 				{$group : {
 				_id : { username: "$username", role: "$role" },
-				total : {$sum : '$points'}
+				total : {$sum : '$points'},
+				total_accomplishment : {$sum : 1}
 			}}
 			 ,{"$sort": { "total": -1 ,"_id.role":-1 } }
 			 // Optionally limit results
@@ -273,7 +274,8 @@ module.exports = function(router){
 				{$match:{date:{$gt : new Date(req.body.from) ,$lt : new Date(req.body.to)}}},
 				{$group : {
 				_id : { username: "$username", role: "$role" },
-				total : {$sum : '$points'}
+				total : {$sum : '$points'},
+				total_accomplishment : {$sum : 1}
 			}}
 			 ,{"$sort": { "total": -1 ,"_id.role":-1} }
 			 // Optionally limit results
