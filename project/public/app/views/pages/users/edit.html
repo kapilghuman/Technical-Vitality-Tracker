@@ -8,12 +8,12 @@
 <br>
 
 <ul class="nav nav-tabs">
-   <li role="presentation" ng-click="edit.usernamePhase();" ng-class="usernameTab"><a href="#"> Details </a> </li>&emsp;
+   <li role="presentation" ng-click="edit.usernamePhase();" ng-class="usernameTab"><a href="#"> Edit Status for Idea/Patent </a> </li>&emsp;
 </ul>
 
 <form name="edit.nameForm" ng-submit="edit.updateStatus(newStatus, edit.nameForm.status.$valid);" novalidate>
  
- label>Status</label>&emsp;</br>
+ <label>Status</label>&emsp;</br>
     <select class="form-control" name="status" ng-model="newStatus" required>
        <option value="Idea_Submitted">Idea Submitted</option>
        <option value="Idea_Rejected">Idea Rejected</option>
