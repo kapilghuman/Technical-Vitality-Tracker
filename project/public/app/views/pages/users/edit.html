@@ -13,24 +13,19 @@
 
 <form name="edit.nameForm" ng-submit="edit.updateStatus(newStatus, edit.nameForm.status.$valid);" novalidate>
  
-  <label>Status</label>&emsp;</br>
+ label>Status</label>&emsp;</br>
     <select class="form-control" name="status" ng-model="newStatus" required>
-       <option value="Disclosure_Submitted" selected>Disclosure Submitted</option>
-       <option value="Disclosure_Filed">Disclosure Filed</option>
-       <option value="Patent_Submitted">Patent Submitted</option>
-	   <option value="Patent_Filed">Patent Filed</option>
-     </select>
- 
-  <label>Status</label>&emsp;</br>
-    <select class="form-control" name="status" ng-model="newStatus" required>
-       <option value="Idea_Submitted" selected>Idea Submitted</option>
+       <option value="Idea_Submitted">Idea Submitted</option>
        <option value="Idea_Rejected">Idea Rejected</option>
        <option value="Idea_Accepted">Idea Accepted</option>
-	   <option value="Idea_Published">Idea Published</option>
+       <option value="Idea_Published">Idea Published</option>
+       <option value="Disclosure_Submitted">Disclosure Submitted</option>
+       <option value="Disclosure_Filed">Disclosure Filed</option>
+       <option value="Patent_Submitted">Patent Submitted</option>
+       <option value="Patent_Filed">Patent Filed</option>
      </select>
 
-
- <div class="text">
+  <div class="text">
     <button class="button" type="submit">Update</button>
   </div>
   
